@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ApiService } from '../../Services';
+import { LandingFlight } from './LandingFlight';
+import './LandingFlightEvents.css';
 
 export const LandingFlightEvents = () => {
   const [index, setIndex] = useState(0);
@@ -49,11 +51,8 @@ export const LandingFlightEvents = () => {
 
   if (!landingFlightEvents[index]) return null;
   return (
-    <div>
-      landingFlightEvents{' '}
-      {landingFlightEvents.map((event) => (
-        <div key={event.flight}>{JSON.stringify(event)}</div>
-      ))}
+    <div id="landingFlightEvents">
+      <LandingFlight event={landingFlightEvents[index]} />
     </div>
   );
 };

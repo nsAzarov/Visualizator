@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ApiService } from '../../Services';
+import { TakingOffFlight } from './TakingOffFlight';
+import './TakingOffFlightEvents.css';
 
 export const TakingOffFlightEvents = () => {
   const [index, setIndex] = useState(0);
@@ -49,11 +51,8 @@ export const TakingOffFlightEvents = () => {
 
   if (!takingOffFlightEvents[index]) return null;
   return (
-    <div>
-      takingOffFlightEvents{' '}
-      {takingOffFlightEvents.map((event) => (
-        <div key={event.flight}>{JSON.stringify(event)}</div>
-      ))}
+    <div id="takingOffFlightEvents">
+      <TakingOffFlight event={takingOffFlightEvents[index]} />
     </div>
   );
 };
