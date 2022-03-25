@@ -9,6 +9,7 @@
 }
 
 #takingOffFlightTitle {
+  height: 30px;
   text-align: center;
 }
 
@@ -22,6 +23,6 @@
     bottom: 0;
   }
   to {
-    bottom: 200px;
+    bottom: 370px;
   }
 }
