@@ -1,1 +1,1 @@
-export * from './TicketSalesEvents.js';
+export * from './TicketSalesWrapper.js';

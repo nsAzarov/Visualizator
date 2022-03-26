@@ -1,5 +1,5 @@
 import React from 'react';
-import { Aeroplane } from '../../../icons';
+import { Aeroplane } from '../../../../icons';
 import './TakingOffFlight.css';
 
 export const TakingOffFlight = ({ event }) => {

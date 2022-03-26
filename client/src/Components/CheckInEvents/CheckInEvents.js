@@ -5,14 +5,16 @@ import { TicketsRegistered } from './TicketsRegistered';
 
 export const CheckInEvents = () => {
   const [index, setIndex] = useState(0);
+  const [intervalShowTime, setIntervalShowTime] = useState(0);
 
   const [checkInEvents, setCheckInEvents] = useState([]);
   const api = useMemo(() => new ApiService(), []);
 
   let intervalRefetchTime = 5000;
-  let intervalShowTime = 0;
-  if (!checkInEvents.length) intervalShowTime = intervalRefetchTime;
-  else intervalShowTime = intervalRefetchTime / checkInEvents.length;
+  useEffect(() => {
+    if (!checkInEvents.length) setIntervalShowTime(intervalRefetchTime);
+    else setIntervalShowTime(intervalRefetchTime / checkInEvents.length);
+  }, [checkInEvents]);
 
   const fetchCheckInEvents = useCallback(() => {
     api.getCheckInEvents().then((data) => {
@@ -50,9 +52,8 @@ export const CheckInEvents = () => {
   if (!checkInEvents[index]) return null;
   return (
     <div>
-      {index}
       {checkInEvents[index].type === 'passengers_came' && (
-        <PassengersCame event={checkInEvents[index]} />
+        <PassengersCame event={checkInEvents[index]} index={index} />
       )}
       {checkInEvents[index].type === 'tickets_registered' && (
         <TicketsRegistered event={checkInEvents[index]} />

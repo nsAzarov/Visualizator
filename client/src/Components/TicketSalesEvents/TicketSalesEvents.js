@@ -5,14 +5,16 @@ import { TicketsBought } from './TicketsBought';
 
 export const TicketSalesEvents = () => {
   const [index, setIndex] = useState(0);
+  const [intervalShowTime, setIntervalShowTime] = useState(0);
 
   const [ticketSalesEvents, setTicketSalesEvents] = useState([]);
   const api = useMemo(() => new ApiService(), []);
 
   let intervalRefetchTime = 5000;
-  let intervalShowTime = 0;
-  if (!ticketSalesEvents.length) intervalShowTime = intervalRefetchTime;
-  else intervalShowTime = intervalRefetchTime / ticketSalesEvents.length;
+  useEffect(() => {
+    if (!ticketSalesEvents.length) setIntervalShowTime(intervalRefetchTime);
+    else setIntervalShowTime(intervalRefetchTime / ticketSalesEvents.length);
+  }, [ticketSalesEvents]);
 
   const fetchTicketSalesEvents = useCallback(() => {
     api.getTicketSalesEvents().then((data) => {
@@ -50,9 +52,12 @@ export const TicketSalesEvents = () => {
   if (!ticketSalesEvents[index]) return null;
   return (
     <div>
-      {index}
       {ticketSalesEvents[index].type === 'passengers_came' && (
-        <PassengersCame event={ticketSalesEvents[index]} />
+        <PassengersCame
+          event={ticketSalesEvents[index]}
+          index={index}
+          intervalShowTime={intervalShowTime}
+        />
       )}
       {ticketSalesEvents[index].type === 'tickets_bought' && (
         <TicketsBought event={ticketSalesEvents[index]} />

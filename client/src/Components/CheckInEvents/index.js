@@ -1,1 +1,1 @@
-export * from './CheckInEvents.js';
+export * from './CheckInWrapper.js';
