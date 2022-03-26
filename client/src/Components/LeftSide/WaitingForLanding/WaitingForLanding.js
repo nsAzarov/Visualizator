@@ -7,11 +7,14 @@ export const WaitingForLanding = () => {
         display: 'flex',
         height: '100px',
         width: '400px',
-        border: '1px solid grey',
-        overflow: 'auto'
+        border: '1px dashed grey',
+        borderRadius: '4px',
+        padding: '8px',
+        overflow: 'auto',
+        marginBottom: '30px'
       }}
     >
-      Самолёты ожидающие посадки
+      Waiting for landing
     </div>
   );
 };

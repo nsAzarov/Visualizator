@@ -13,7 +13,9 @@ export const LeftSide = () => {
           style={{
             width: '100px',
             height: '500px',
-            border: '1px solid black'
+            border: '1px solid black',
+            borderRadius: '4px',
+            padding: '8px'
           }}
         >
           <LandingFlightEvents />
@@ -22,7 +24,9 @@ export const LeftSide = () => {
           style={{
             width: '100px',
             height: '500px',
-            border: '1px solid black'
+            border: '1px solid black',
+            borderRadius: '4px',
+            padding: '8px'
           }}
         >
           <TakingOffFlightEvents />
