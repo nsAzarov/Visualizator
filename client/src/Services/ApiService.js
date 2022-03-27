@@ -29,8 +29,16 @@ export class ApiService {
     return await this.getResource('/GetCheckInEvents');
   }
 
+  async getWaitingForLandingFlightEvents() {
+    return await this.getResource('/GetWaitingForLandingFlightEvents');
+  }
+
   async getLandingFlightEvents() {
     return await this.getResource('/GetLandingFlightEvents');
+  }
+
+  async getWaitingForTakeOffFlightEvents() {
+    return await this.getResource('/GetWaitingForTakeOffFlightEvents');
   }
 
   async getTakingOffFlightEvents() {

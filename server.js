@@ -11,7 +11,9 @@ app.use(bodyParser.json())
 
 let ticketSalesEvents = []
 let checkInEvents = []
+let waitingForLandingFlightEvents = []
 let landingFlightEvents = []
+let waitingForTakeOffFlightEvents = []
 let takingOffFlightEvents = []
 
 app.post('/AddTicketSalesEvent', (req, res) => {
@@ -68,11 +70,24 @@ app.get('/GetCheckInEvents', (_, res) => {
 	checkInEvents = []
 })
 
+app.post('/AddWaitingForLandingFlightEvent', (req, res) => {
+	logReq('AddWaitingForLandingFlightEvent', req.body)
+
+	waitingForLandingFlightEvents.push(req.body)
+	res.json('ok')
+})
+
 app.post('/AddLandingFlightEvent', (req, res) => {
 	logReq('AddLandingFlightEvent', req.body)
 
 	landingFlightEvents.push(req.body)
 	res.json('ok')
+})
+
+app.get('/GetWaitingForLandingFlightEvents', (_, res) => {
+	logReq('GetWaitingForLandingFlightEvents')
+	res.json(waitingForLandingFlightEvents)
+	waitingForLandingFlightEvents = []
 })
 
 app.get('/GetLandingFlightEvents', (_, res) => {
@@ -81,11 +96,24 @@ app.get('/GetLandingFlightEvents', (_, res) => {
 	landingFlightEvents = []
 })
 
+app.post('/AddWaitingForTakeOffFlightEvent', (req, res) => {
+	logReq('AddWaitingForTakeOffFlightEvent', req.body)
+
+	waitingForTakeOffFlightEvents.push(req.body)
+	res.json('ok')
+})
+
 app.post('/AddTakingOffFlightEvent', (req, res) => {
 	logReq('AddTakingOffFlightEvent', req.body)
 
 	takingOffFlightEvents.push(req.body)
 	res.json('ok')
+})
+
+app.get('/GetWaitingForTakeOffFlightEvents', (_, res) => {
+	logReq('GetWaitingForTakeOffFlightEvents')
+	res.json(waitingForTakeOffFlightEvents)
+	waitingForTakeOffFlightEvents = []
 })
 
 app.get('/GetTakingOffFlightEvents', (_, res) => {

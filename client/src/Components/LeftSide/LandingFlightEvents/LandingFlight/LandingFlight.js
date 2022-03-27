@@ -5,7 +5,7 @@ import './LandingFlight.css';
 export const LandingFlight = ({ event }) => {
   return (
     <div id="landingFlightWrapper">
-      <div id="landingPlaneWrapper">
+      <div id="landingPlaneWrapper" key={event.flight}>
         <span id="landingFlightTitle">Flight: {event.flight}</span>
         <img src={Aeroplane} alt="aeroplane" id="landingPlaneImage" />
       </div>
